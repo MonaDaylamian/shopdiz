@@ -1,13 +1,253 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+:root {
+  --bg-color: #5781a9; 
+  --high-color: rgb(230, 109, 88);
+  --color-dark: #5c5959;
+  --color-light: #ebe6e6;
+}
+.parent-div{
+  width: 70%;
+  
+}
+
+.header {
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  height: 80px;
+  text-align: center;
+  color:var(--color-light);
+    font-family: Arial, Helvetica, sans-serif;
+  padding-top: 30px;
+}
+.header h2 {
+  padding: 0px;
+  margin: 0px;
+}
+
+/**:focus {
+  outline: none;
+}*/
+
+.input-bar {
+  width: calc(100% - 40px);
+  background-color: white;
+  margin-right: 20px;
+  margin-left: 20px;
+  height: 38px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.input-chkbox {
+  color: var(--color-dark);
+  border: none;
+  font-size: 0.9em;
+}
+.input-chkbox input {
+  transform: scale(1.3);
+}
+.input-urgent {
+  height: 36px;
+}
+.input-txt {
+  width: calc(100% - 200px);
+  box-sizing: border-box;
+  height: 38px;
+  padding-left: 10px;
+  border: none;
+}
+.input-btn {
+  width: 100px;
+  border: none;
+  background-color: #f7f4f4;
+  color: var(--color-dark);
+  height: 38px;
+  cursor: pointer;
+}
+.all-items {
+  width: calc(100% - 34px);
+  margin: 0px 18px 0px 18px;
+  box-sizing: border-box;
+  border-bottom: 8px solid var(--bg-color);
+  border-radius: 0px 0px 18px 18px;
+}
+
+.productList {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+
+}
+.list-item{
+  padding-left: 40px;
+  cursor: pointer;
+  height: 40px;
+
+ display: flex;
+ align-items: center;
+ /*flex-wrap: wrap;*/
+
+}
+/*.list-item label button {
+  flex-grow: 1;
+}
+.list-item span {
+  flex: 1 94% 1;
+
+}*/
+.list-item:hover .remove-btn{
+  display: block;
+}
+
+.normal-list:nth-child(odd) {
+  background-color: #f7f4f4;
+}
+.normal-list:nth-child(even) {
+  background-color: #817d7d30;
+}
+
+.active-list {
+  background-color: #918f8f;
+  color:var(--color-light);
+}
+.high-list {
+  background-color: var(--high-color);
+  color:var(--color-light);
+}
+.done-list {
+  text-decoration: line-through;
+}
+
+/*.active-list::before{
+  content: '✔';   
+  position: absolute;
+  left : 5px;
+
+}*/
+.remove-btn img{
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+
+}
+.remove-btn {
+
+  border: none;
+  background-color: transparent;
+  outline: none;
+   margin-left:auto;
+  margin-right: 7px;
+ display:none; 
+   /*background-color: red;
+  float: left;
+  padding-top: 0px;*/
+}
+/*.remove-btn:hover {
+  background-color: var(--bg-color);
+  color: white;
+} */
+.check-btn {
+  position: absolute;
+  left: 28px;
+  /*padding-top: 7px; */
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+
+.filter-bar {
+  background-color: var(--bg-color);
+  height: 40px;
+  border: 2px solid var(--bg-color);
+  border-top: none;
+  border-radius: 0px 0px 20px 20px;
+  padding-top: 5px;
+}
+.sort-btns {
+  box-sizing: border-box;
+  float: right;
+  color:var(--color-light);
+  font-size: 0.9em;  
+}
+
+.sort-btn-item img{
+  cursor: pointer;
+  width: 19px;
+  height: 20px;
+  padding-right: 15px;
+}
+.filter-btns {
+  width: 100%;
+  position: absolute;
+  left: 60px;
+  box-sizing: border-box;
+}
+.filter-btn-item img {
+  /* content: '🗑';*/
+  cursor: pointer;
+  width: 19px;
+  height: 20px;
+  padding-left: 15px;
+}
+.filter-btn-item,.sort-btn-item {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+
+.inline-span--active,
+.inline-input--active {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  padding: 0;
+  background: none;
+   /*  border-bottom: 1px dashed #666666;*/
+  border: none;
+
+}
+
+.inline-span--active {
+ 
+
+  /*flex: 1 100% 1 ;
+ padding-top: 7px;*/
+ display: block;
+ width: 100%;
+ height: 100%;
+
+  
+  cursor: pointer;
+  
+}
+.inline-input--active {
+  height: 100%;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #666666;
+  text-align: left;
+}
+
+.inline-span--hidden,
+.inline-input--hidden {
+  display: none;
+}
+
+.inline-input-parent{
+  width: calc(100% - 35px);
 }
