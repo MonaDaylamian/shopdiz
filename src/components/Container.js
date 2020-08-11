@@ -148,6 +148,7 @@ class Container extends React.Component {
             return { id: item.id, name: item.name, priority: item.priority, done: item.done }
         });
         localStorage.setItem("toShopObj", JSON.stringify(newShopList));
+
     }
 
     render() {
@@ -159,35 +160,59 @@ class Container extends React.Component {
                 false;
         return (
             //use ref callback to store a reference to a DOM node of ToshopInput component 
-            <div className="parent-div">
-                <div className="header">
+            <span>
+                <div className="parent-div">
+                    <div className="header">
 
-                    <ToshopInput
-                        urgentChk={this.state.urgentChk}
-                        urgentClicked={this.urgentClicked}
-                        onClick={this.addItem}
-                        inputValue={this.state.inputValue}
-                        inputChanged={(e) => this.setState({ inputValue: e.target.value })}
-                        inputKeyPressed={this.addItem}
-                        inputRef={e => this.productInput = e}
+                        <ToshopInput
+                            urgentChk={this.state.urgentChk}
+                            urgentClicked={this.urgentClicked}
+                            onClick={this.addItem}
+                            inputValue={this.state.inputValue}
+                            inputChanged={(e) => this.setState({ inputValue: e.target.value })}
+                            inputKeyPressed={this.addItem}
+                            inputRef={e => this.productInput = e}
+                        />
+                    </div>
+                    <FilterBar
+                        onClick={this.filterClicked}
+                        doFilter={this.doFilter}
+                        allChecked={this.state.allChecked}
+                        anyChecked={isAnyChecked}
+                        hasItem={this.listHasItem(this.state.shopList)}
                     />
+                    <div className="all-items">
+                        <ToshopDisplay
+                            items={this.state.shopList}
+                            onClick={this.shopListClicked}
+                            onChecked={this.itemChecked}
+                            updateInlineText={this.itemTextupdate}
+                        />
+                    </div>
                 </div>
-                <FilterBar
-                    onClick={this.filterClicked}
-                    doFilter={this.doFilter}
-                    allChecked={this.state.allChecked}
-                    anyChecked={isAnyChecked}
-                    hasItem={this.listHasItem(this.state.shopList)}
-                />
-                <div className="all-items">
-                    <ToshopDisplay
-                        items={this.state.shopList}
-                        onClick={this.shopListClicked}
-                        onChecked={this.itemChecked}
-                        updateInlineText={this.itemTextupdate}
-                    />
+                <div className="desc-bar">
+                   <b>Module description</b>
+                        <p>  Making a list of items, whether it is a shopping list or a task list, you can use this component.<br />                It consists of three section: a data entry component, a filter bar component, and a list view. </p>
+                    <ul><li><u>Adding</u> Item: Works both with "+" button and "keyboard enter".</li>
+                        <li><u>Prioritizing</u> items:
+                        <ul>
+                                <li>Set the priority of items by checking/unchecking the "Urgent" while adding.</li>
+                                <li>Important items are highlighted by orange color.</li>
+                                <li>Sort items based on the priority by using “orange arrow” icon on the bottom right of the banner.</li>
+                                <li>You can edit the priority of items: Select the item/items, the filter bar will appear,
+                                click on the orange clock in the filter bar to mark it as important or click the gray clock to
+                                set it as a normal item.</li>
+                            </ul>
+                        </li>
+                        <li><u>Mark items</u> as done: Select item/items, then click on the check mark icon from the filter bar.</li>
+                        <li><u>Editing</u> the text of an item: Click on the item to enable inline editing</li>
+                        <li><u>Removing</u> items: Works both with "X" button appearing by on mouse over  
+                            each item and "Recycle Bin" icon of the filter bar</li>
+                            <li><u>Select/Unselect</u> all items by the checkbox at the bottom of the banner. The filter bar
+                            will be visible with checkbox selected</li>
+                    </ul>
                 </div>
-            </div>
+            </span>
         )
     }
 }

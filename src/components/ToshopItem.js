@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import InlineEdit from './InlineEdit';
 
+
 const ToshopItem = (props) => {
 
     const product = props.value;
-    const [inlineEditText,setinlineEditText] = useState(product.name);
+    const [inlineEditText, setinlineEditText] = useState(product.name);
 
     const Checkbox = (props) => {
         return (
@@ -14,29 +15,30 @@ const ToshopItem = (props) => {
                     name="checkItem"
                     type="checkbox"
                     checked={props.checked}
-                    onChange={(e) => props.onChecked(e)} />
+                    onChange={(e) => props.onChecked(e)} 
+                    title="Select this item" />
             </label>
         )
 
     }
 
-    const inlineTextUpdated = (txt)=>{
-        setinlineEditText( txt );
+    const inlineTextUpdated = (txt) => {
+        setinlineEditText(txt);
         props.updateInlineText(txt);
     }
 
     if (product.name.length > 0)
         return (
             <li
-            className={`${product.checked ? "active" :
-            product.priority ? "high" :  "normal"}-list ${product.done ? "done-list" : ""} list-item`}
+                className={`${product.checked ? "active" :
+                    product.priority ? "high" : "normal"}-list ${product.done ? "done-list" : ""} list-item`}
 
             >
-                <Checkbox onChecked={() => props.onChecked()} checked={product.checked} />          
-                <InlineEdit value = {inlineEditText} setInlineValue={(txt)=> inlineTextUpdated(txt)} />
+                <Checkbox onChecked={() => props.onChecked()} checked={product.checked} />
+                <InlineEdit value={inlineEditText} setInlineValue={(txt) => inlineTextUpdated(txt)} />
                 <button className="remove-btn">
-                 <img src="/delete.png" title="Remove" alt="Remove" onClick={(e) => props.onClick(e, 'remove')}></img>
-             </button>
+                    <img src="/delete.png" title="Remove" alt="Remove" onClick={(e) => props.onClick(e, 'remove')}></img>
+                </button>
             </li>
         );
     else return null;

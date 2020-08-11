@@ -17,8 +17,9 @@ const ToshopInput = (props) => {
                 ref={props.inputRef}
                 onChange={props.inputChanged}
                 onKeyPress={(e) => { if (e.key === 'Enter') props.inputKeyPressed() }}
+                title="Write an item"
             />
-            <label className="input-chkbox" >
+            <label className="input-chkbox" title="Mark the important item">
                 <input
                     name="urgentCheck"
                     type="checkbox"
@@ -27,10 +28,11 @@ const ToshopInput = (props) => {
                         props.urgentClicked(e.target.checked);                       
                     }}
                     onKeyPress={(e) => { if (e.key === 'Enter') props.inputKeyPressed() }}
+                    title="High priority item"
                      />
                 Urgent
             </label>
-            <button className="input-btn" onClick={() => props.onClick()}>+</button>
+            <button className="input-btn" onClick={() => props.onClick()} title="Add item">+</button>
         </div>
     );
 };

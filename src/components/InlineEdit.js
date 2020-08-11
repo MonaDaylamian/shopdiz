@@ -79,6 +79,7 @@ const InlineEdit = (props) => {
         onChange={e =>
           setInputValue(DOMPurify.sanitize(e.target.value))
         }
+
       //   onKeyDown={e => downHandler(e)}
 
       />

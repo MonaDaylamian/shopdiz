@@ -17,8 +17,16 @@ code {
   --color-dark: #5c5959;
   --color-light: #ebe6e6;
 }
+.desc-bar{
+  width: 35%;
+  background-color:var(--color-light);
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 10px 20px 20px 20px;
+}
 .parent-div{
-  width: 70%;
+  width: 60%;
   
 }
 
